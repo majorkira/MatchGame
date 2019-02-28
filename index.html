@@ -3,13 +3,23 @@
 <head>
 	<title>Matching Game</title>
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:600" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow|ZCOOL+QingKe+HuangYou" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="match.css">
-	<script type="text/javascript" src="match.js"></script>
 </head>
 <body>
+	<h1>Dog Matching Game</h1>
 	<div class="container">
-			<div><h1><span>Dog Matching Game</span>
-				  <span>Time Elapsed</span> | <span># Moves</span> | <span>Reset</span></h1></div>
+				<div class="sidebar">
+				 	   <div>
+				 	   		<span class="titles">Time: </span>
+					   		<span class="numbers" id="time">0000</span>
+					   </div>
+					   <div>
+					   		<span class="titles">Moves: </span> 
+					  		<span class="numbers" id="moves">0000</span>
+					   </div>
+					   <div><button id="reset">Reset Game</button></div>
+			    </div>
 			<div class="dogGrid">
 				<div class="card">
 					<div class="front"><img src="dog1.jpg" class="imageFace"></div>
@@ -109,5 +119,6 @@
 				</div>
 			</div>
 	</div>
+<script type="text/javascript" src="match.js"></script>
 </body>
 </html>

@@ -1,7 +1,13 @@
 const dogArray = ["dog1.jpg", "dog2.jpg", "dog3.jpg", "dog4.jpg", "dog5.jpg", "dog6.jpg", "dog7.jpg", "dog8.jpg", "dog9.jpg", "dog10.jpg", "dog11.jpg", "dog12.jpg"];
-  let firstCard = null;
-  let secondCard = null;
-  let counter = 0;
+let firstCard = null;
+let secondCard = null;
+let counter = 0;
+let moves = 0;
+let moveDisplay = document.getElementById('moves');
+let resetButton = document.getElementById('reset');
+let time = setInterval(countTimer, 1000);
+let totalSeconds = 0;
+let winning = false;
 
 window.onload = function() {
   initializeCards(dogArray);
@@ -10,6 +16,9 @@ window.onload = function() {
     card.addEventListener('click', handleClicks);
 })
 }
+  resetButton.addEventListener('click', function() {
+    document.location.reload()
+  })
 
   function handleClicks(e) {
     if (!firstCard&&!secondCard) { 
@@ -19,6 +28,8 @@ window.onload = function() {
        console.log('first card', firstCard);
        flip(e.currentTarget);
     } else if (!secondCard) {
+       moves++;
+       moveDisplay.innerHTML = moves.toString().padStart(4, "0");
        if (e.currentTarget === firstCard) {return}
        secondCard = e.currentTarget;
        console.log('second card', secondCard);
@@ -48,9 +59,6 @@ window.onload = function() {
           firstCard = null;
           secondCard = null; }, 1200);
        }
-      /* setTimeout(function() {
-       firstCard = null;
-       secondCard = null;}, 2000); */
   } 
     
 
@@ -84,5 +92,24 @@ function flip(image) {
 
 function win() {
   let dogGrid = document.querySelector(".dogGrid");
-  flip(dogGrid);
+  winning = true;
+  dogGrid.style.transition="opacity 2s ease-in-out";
+  dogGrid.style.opacity="0";
+  setTimeout(function() {
+      dogGrid.style.display="block";
+      dogGrid.style.backgroundImage="url('d5.jpg')";
+      dogGrid.style.backgroundSize = "cover";
+      dogGrid.innerHTML= "<p class='jumbo'>You are a ROCK STAR!</p>";
+      dogGrid.style.opacity = "1";
+  }, 2000);
+}
+
+function countTimer() {
+  if (!winning) {
+   ++totalSeconds;
+   let hour = Math.floor(totalSeconds /3600);
+   let minute = Math.floor((totalSeconds - hour*3600)/60);
+   let seconds = totalSeconds - (hour*3600 + minute*60);
+   document.getElementById("time").innerHTML = hour.toString().padStart(1, "0") + ":" + minute.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
+  }
 }
