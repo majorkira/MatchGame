@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="temp.css">
+	<script type="text/javascript" src="temp.js"></script>
+</head>
+<script>
+	function flip() {
+	let el = document.querySelector('.card');
+	el.classList.add('flip');
+}
+function flipBack() {
+	let el = document.querySelector('.card');
+	el.classList.remove('flip');
+} 
+</script>
+<body>
+<div class="container">
+	<div class="card">
+		<!--
+		<div class="front"><img src="dog1.jpg" class="imageFace"></div>
+		<div class="back"><img class="cardback.jpg" class="imageFace"></div>
+	-->
+		<div class="front">front</div>
+		<div class="back">back</div>
+	</div>
+</div>
+<div class="button">
+	<button onclick="flip()">Flip</button>
+	<button onclick="flipBack()">Flip Back</button>
+</div>
+</body>
+</html>

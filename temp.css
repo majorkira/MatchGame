@@ -1,0 +1,37 @@
+html {
+	background :yellow;
+}
+.container {
+	perspective: 800px;
+}
+.front {
+	transform: RotateY(0deg);
+	background-color: orange;
+
+}
+.back {
+	transform: RotateY(180deg);
+	background-color: blue;
+}
+.card {
+	transform-style: preserve-3d;
+	display: grid;
+	grid-template-areas: overlap;
+}
+.front, .back {
+	width: 200px;
+	height: 150px;
+	border-radius: 10px;
+	grid-area: overlap;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	backface-visibility: hidden;
+}
+.flip {
+	transform: RotateY(180deg);
+}
+img {
+	width: 200px;
+	height: 150px;
+}
